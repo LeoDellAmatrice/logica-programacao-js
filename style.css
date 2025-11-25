@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+#editor {
+    width: 100%;
+    font-family: monospace;
+    margin-top: 10px;
+}
+
+#feedback {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#output {
+    margin-top: 10px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+}
