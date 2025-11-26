@@ -1,28 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Aprenda Lógica com JS</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- CodeMirror base + modo JavaScript -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+
+    <!-- Opcional: addons úteis (pareamento de parênteses) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
 </head>
+
 <body>
-<h1>Aprenda Lógica de Programação com JS</h1>
+    <header>
+        <h1>Aprenda Lógica com JavaScript</h1>
+        <p class="subtitle">Resolva desafios e veja o resultado no console interativo</p>
+    </header>
 
-<div id="desafio">
-    <h2 id="titulo" >Desafio 1: Variáveis básicas</h2>
-    <p id="instrucoes" >Crie uma variável <code>x</code> com valor <code>5</code>.</p>
-</div>
+    <main>
+        <section id="desafio" class="card">
+            <div class="card-desafio">
+                <button id="btn-anterior"> <<  Desafio Anterior</button>
+                <h2 id="titulo"></h2>
+                <button id="btn-proximo"> >> Próximo Desafio</button>
+            </div>
+            <h3>Instruções:</h3>
+            <p id="instrucoes"></p>
+        </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+        <section id="feedback" class="feedback"></section>
 
-<div id="editor"></div>
-<button id="btn-executar">Executar</button>
-<button id="btn-proximo">Próximo Desafio</button>
-<div id="feedback"></div>
-<div id="output"></div>
+        <section class="workspace">
+            <div class="editor card">
+                <div class="header-card">
+                    <h3>Editor de Código</h3>
+                    <button id="btn-theme-editor">trocar tema Editor</button>
+                </div>
+                <!-- Div container do CodeMirror -->
+                <div id="editor"></div>
+                <div class="buttons">
+                    <button id="btn-executar">▶ Executar</button>
+                </div>
+            </div>
 
-<script type="module" src="script.js"></script>
+            <div class="console card">
+                <div class="header-card">
+                    <h3>Console</h3>
+                    <button onclick="alert('não implementado')">Limpar Console</button>
+                </div>
+                <div id="output"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Todos os direitos reservados © Leonardo Dell'Amatrice Silva</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+    <script src="estilos.js"></script>
 </body>
+
 </html>
