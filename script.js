@@ -1,6 +1,5 @@
 import { Desafios } from './desafios.js';
 
-// script.js
 let editor;
 let desafioAtual = 0;
 
@@ -12,7 +11,7 @@ window.onload = () => {
 function carregarEditorCodeMirror(theme = "default", value = "// Bem-vindo! Escreva seu código aqui\n// Use console.log() para ver a saída no console à direita.\n") {
   editor = CodeMirror(document.getElementById("editor"), {
     mode: "javascript",
-    theme: theme,        // estamos estilizando via CSS da classe .cm-s-default
+    theme: theme,
     lineNumbers: true,
     tabSize: 2,
     indentUnit: 2,
