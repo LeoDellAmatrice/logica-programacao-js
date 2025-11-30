@@ -22,21 +22,15 @@ function carregarEditorCodeMirror(theme = "default", value = "// Bem-vindo! Escr
   });
 }
 
-function TrocarThemaEditor() {
-  const editorElement = document.getElementById('editor');
+function feedbackMenssage(text, type){
+  const feedback = document.getElementById("feedback");
 
-  editorElement.innerHTML = "";
+  feedback.textContent = text;
 
-  const editorCode = editor.getValue();
+  feedback.className = "feedback " + type;
 
-  if (editor.getOption("theme") === "default") {
-    carregarEditorCodeMirror("dark", editorCode);
-  } else {
-    carregarEditorCodeMirror("default", editorCode);
-  }
-
-  editorElement.classList.toggle('codeMirror-Dark');
 }
+
 
 function carregarDesafio() {
   document.getElementById("titulo").textContent = Desafios[desafioAtual].titulo;
@@ -50,17 +44,15 @@ function carregarDesafio() {
 
 function executar() {
   const code = editor.getValue();
-  const feedback = document.getElementById("feedback");
   const output = document.getElementById("output");
 
   try {
     const valido = Desafios[desafioAtual].validar(code);
+
     if (valido) {
-      feedback.textContent = "✅ Parabéns! Você completou o desafio.";
-      feedback.className = "feedback success";
+      feedbackMenssage("Parabéns! Você completou o desafio.", "success")
     } else {
-      feedback.textContent = "❌ Ainda não está certo. Tente novamente.";
-      feedback.className = "feedback error";
+      feedbackMenssage("Ainda não está certo. Tente novamente.", "error")
     }
 
     // Captura saída do usuário
@@ -73,8 +65,8 @@ function executar() {
       userFunc(fakeConsole);
 
       output.textContent = fakeConsole._output || "Código rodou sem saída.";
-    } catch {
-      output.textContent = "Erro ao executar saída.";
+    } catch (e){
+      output.textContent = "Erro ao executar saída. \n" + e;
     }
 
   } catch (e) {
@@ -102,8 +94,30 @@ function desafioAnterior() {
   }
 }
 
+function trocarThemaEditor() {
+  const editorElement = document.getElementById('editor');
+
+  editorElement.innerHTML = "";
+
+  const editorCode = editor.getValue();
+
+  if (editor.getOption("theme") === "default") {
+    carregarEditorCodeMirror("dark", editorCode);
+  } else {
+    carregarEditorCodeMirror("default", editorCode);
+  }
+
+  editorElement.classList.toggle('codeMirror-Dark');
+}
+
+function limparConsole(){
+  const output = document.getElementById("output");
+  output.textContent = "";
+}
+
 document.getElementById("btn-executar").onclick = executar;
 document.getElementById("btn-proximo").onclick = proximoDesafio;
 document.getElementById("btn-anterior").onclick = desafioAnterior;
 
-document.getElementById('btn-theme-editor').addEventListener('click', TrocarThemaEditor);
+document.getElementById('btn-theme-editor').addEventListener('click', trocarThemaEditor);
+document.getElementById('btn-limpar-console').addEventListener('click', limparConsole)
