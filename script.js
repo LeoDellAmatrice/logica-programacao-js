@@ -120,4 +120,4 @@ document.getElementById("btn-proximo").onclick = proximoDesafio;
 document.getElementById("btn-anterior").onclick = desafioAnterior;
 
 document.getElementById('btn-theme-editor').addEventListener('click', trocarThemaEditor);
-document.getElementById('btn-limpar-console').addEventListener('click', limparConsole)
+document.getElementById('btn-limpar-console').addEventListener('click', limparConsole);
