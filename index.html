@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprenda Lógica com JS</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/codeMirorCss.css">
 
     <!-- CodeMirror base + modo JavaScript -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
@@ -31,9 +32,18 @@
             </div>
             <h3>Instruções:</h3>
             <p id="instrucoes"></p>
+
         </section>
 
-        <section id="feedback" class="feedback"></section>
+        <section class="console-section">
+            <div class="console card">
+                <div class="header-card">
+                    <h3>Console</h3>
+                    <button id="btn-limpar-console">Limpar Console</button>
+                </div>
+                <div id="output"></div>
+            </div>
+        </section>
 
         <section class="workspace">
             <div class="editor card">
@@ -44,17 +54,11 @@
                 <!-- Div container do CodeMirror -->
                 <div id="editor"></div>
                 <div class="buttons">
+                    <section id="feedback" class="feedback"></section>
                     <button id="btn-executar">▶ Executar</button>
                 </div>
             </div>
-
-            <div class="console card">
-                <div class="header-card">
-                    <h3>Console</h3>
-                    <button id="btn-limpar-console">Limpar Console</button>
-                </div>
-                <div id="output"></div>
-            </div>
+            
         </section>
 
     </main>
