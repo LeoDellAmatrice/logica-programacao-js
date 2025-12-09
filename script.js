@@ -14,7 +14,6 @@ function setStorageDesafio(){
   const desafio = localStorage.getItem("Desafio")
 
   if (!desafio){
-    alert('not desafios')
     localStorage.setItem('Desafio', 0);
     return
   }
