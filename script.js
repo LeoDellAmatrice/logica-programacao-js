@@ -48,6 +48,9 @@ function feedbackMenssage(text, type){
 
 function avancarDesafio(){
 
+  if (desafioAtual == localStorage.getItem("Desafio")){
+    localStorage.setItem("Desafio", (desafioAtual + 1));
+  }
 
 }
 
