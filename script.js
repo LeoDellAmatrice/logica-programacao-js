@@ -34,10 +34,7 @@ function carregarEditorCodeMirror(theme = "default", value = "// Bem-vindo! Escr
     autofocus: true,
     value: value
   });
-  editor.getWrapperElement().id = "codeMirror-editor";
-
-  const wrapper = editor.getWrapperElement();
-  new ResizeObserver(resizeEditor).observe(wrapper);
+  editor.getWrapperElement().id = "codeMirrorEditor";
 }
 
 function feedbackMenssage(text, type){
@@ -51,8 +48,12 @@ function feedbackMenssage(text, type){
 
 function avancarDesafio(){
 
+  if (!desafioAtual < Desafios.length - 1){
+    return
+  }
+
   if (desafioAtual == localStorage.getItem("Desafio")){
-    localStorage.setItem("Desafio", (desafioAtual + 1));
+    localStorage.setItem("Desafio", Number(desafioAtual) + 1);
   }
 
 }
@@ -106,7 +107,7 @@ function executar() {
 function proximoDesafio() {
 
   if (desafioAtual >= localStorage.getItem('Desafio')){
-    feedbackMenssage(`Complete o desafio ${desafioAtual + 1} antes de continuar`, "error")
+    feedbackMenssage(`Complete o desafio ${desafioAtual+1} antes de continuar`, "error")
     return
   }
 
@@ -144,6 +145,7 @@ function trocarThemaEditor() {
 function limparConsole(){
   const output = document.getElementById("output");
   output.textContent = "";
+  feedbackMenssage("", "");
 }
 
 document.getElementById("btn-executar").onclick = executar;
@@ -152,3 +154,9 @@ document.getElementById("btn-anterior").onclick = desafioAnterior;
 
 document.getElementById('btn-theme-editor').addEventListener('click', trocarThemaEditor);
 document.getElementById('btn-limpar-console').addEventListener('click', limparConsole);
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+    executar();
+  }
+});
