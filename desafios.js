@@ -2,7 +2,6 @@ export const Desafios = [
   {
     titulo: "Desafio 1: Variáveis básicas",
     instrucoes: "Crie uma variável x com valor 5.",
-    template: "// exemplo de declaração de variavel\n//\n// let nomeDaVariavel = valorDaVariavel;",
     validar: (code) => {
       try {
         const func = new Function(`
