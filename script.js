@@ -34,6 +34,10 @@ function carregarEditorCodeMirror(theme = "default", value = "// Bem-vindo! Escr
     autofocus: true,
     value: value
   });
+  editor.getWrapperElement().id = "codeMirror-editor";
+
+  const wrapper = editor.getWrapperElement();
+  new ResizeObserver(resizeEditor).observe(wrapper);
 }
 
 function feedbackMenssage(text, type){
