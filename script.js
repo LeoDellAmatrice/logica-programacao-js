@@ -5,8 +5,23 @@ let desafioAtual = 0;
 
 window.onload = () => {
   carregarEditorCodeMirror();
+  setStorageDesafio();
   carregarDesafio();
 };
+
+function setStorageDesafio(){
+
+  const desafio = localStorage.getItem("Desafio")
+
+  if (!desafio){
+    alert('not desafios')
+    localStorage.setItem('Desafio', 0);
+    return
+  }
+
+  desafioAtual = desafio
+
+}
 
 function carregarEditorCodeMirror(theme = "default", value = "// Bem-vindo! Escreva seu código aqui\n// Use console.log() para ver a saída no console à direita.\n") {
   editor = CodeMirror(document.getElementById("editor"), {
@@ -31,6 +46,11 @@ function feedbackMenssage(text, type){
 
 }
 
+function avancarDesafio(){
+  
+
+}
+
 
 function carregarDesafio() {
   document.getElementById("titulo").textContent = Desafios[desafioAtual].titulo;
@@ -50,6 +70,7 @@ function executar() {
     const valido = Desafios[desafioAtual].validar(code);
 
     if (valido) {
+      avancarDesafio()
       feedbackMenssage("Parabéns! Você completou o desafio.", "success")
     } else {
       feedbackMenssage("Ainda não está certo. Tente novamente.", "error")
@@ -77,13 +98,17 @@ function executar() {
 }
 
 function proximoDesafio() {
+
+  if (desafioAtual >= localStorage.getItem('Desafio')){
+    feedbackMenssage(`Complete o desafio ${desafioAtual + 1} antes de continuar`, "error")
+    return
+  }
+
   if (desafioAtual < Desafios.length - 1) {
     desafioAtual++;
     carregarDesafio();
   } else {
-    const feedback = document.getElementById("feedback");
-    feedback.textContent = "🎉 Você completou todos os desafios!";
-    feedback.className = "feedback success";
+    feedbackMenssage("Você completou todos os desafios!", "success")
   }
 }
 
