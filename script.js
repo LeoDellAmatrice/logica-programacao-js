@@ -47,7 +47,11 @@ function feedbackMenssage(text, type){
 }
 
 function avancarDesafio(){
-  
+
+  alert(desafioAtual)
+  if (desafioAtual == localStorage.getItem("Desafio")){
+    localStorage.setItem("Desafio", (desafioAtual + 1));
+  }
 
 }
 
