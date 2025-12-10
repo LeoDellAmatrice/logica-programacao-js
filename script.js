@@ -48,14 +48,15 @@ function feedbackMenssage(text, type){
 
 function avancarDesafio(){
 
-  if (!desafioAtual < Desafios.length - 1){
+  if (desafioAtual >= Desafios.length - 1){
+    alert("primeiro if")
     return
   }
 
   if (desafioAtual == localStorage.getItem("Desafio")){
     localStorage.setItem("Desafio", Number(desafioAtual) + 1);
   }
-
+  
 }
 
 
