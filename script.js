@@ -49,7 +49,7 @@ function feedbackMenssage(text, type){
 function avancarDesafio(){
 
   if (desafioAtual >= Desafios.length - 1){
-    alert("primeiro if")
+    alert("Este foi o ultimo desafio por enaquanto.\nObrigado por usar o site :)\nEm breve tera atualizaçoes...")
     return
   }
 
