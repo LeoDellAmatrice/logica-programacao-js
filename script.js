@@ -108,7 +108,7 @@ function executar() {
 function proximoDesafio() {
 
   if (desafioAtual >= localStorage.getItem('Desafio')){
-    feedbackMenssage(`Complete o desafio ${desafioAtual+1} antes de continuar`, "error")
+    feedbackMenssage(`Complete o desafio ${Number(desafioAtual) + 1} antes de continuar`, "error")
     return
   }
 
