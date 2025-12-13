@@ -18,7 +18,7 @@ function setStorageDesafio(){
     return
   }
 
-  desafioAtual = desafio
+  desafioAtual = Number(desafio)
 
 }
 
@@ -54,13 +54,14 @@ function avancarDesafio(){
   }
 
   if (desafioAtual == localStorage.getItem("Desafio")){
-    localStorage.setItem("Desafio", Number(desafioAtual) + 1);
+    localStorage.setItem("Desafio", desafioAtual + 1);
   }
   
 }
 
 
 function carregarDesafio() {
+  document.getElementById("desafio-number").textContent = `Desafio ${desafioAtual + 1}`
   document.getElementById("titulo").textContent = Desafios[desafioAtual].titulo;
   document.getElementById("instrucoes").textContent = Desafios[desafioAtual].instrucoes;
   const feedback = document.getElementById("feedback");
@@ -108,7 +109,7 @@ function executar() {
 function proximoDesafio() {
 
   if (desafioAtual >= localStorage.getItem('Desafio')){
-    feedbackMenssage(`Complete o desafio ${Number(desafioAtual) + 1} antes de continuar`, "error")
+    feedbackMenssage(`Complete o desafio ${desafioAtual + 1} antes de continuar`, "error")
     return
   }
 

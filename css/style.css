@@ -91,6 +91,10 @@ main {
   overflow-y: hidden;
 }
 
+#titulo {
+  text-align: center;
+}
+
 @media (max-width: 900px) {
   .workspace {
     flex-direction: column;
@@ -105,11 +109,6 @@ main {
 
   #btn-anterior, #btn-proximo {
     grid-row-start: 1;
-  }
-
-  #titulo {
-    grid-column: span 2;
-    text-align: center;
   }
 
 }

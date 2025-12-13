@@ -1,6 +1,6 @@
 export const Desafios = [
   {
-    titulo: "Desafio 1: Olá Mundo",
+    titulo: "Olá Mundo",
     instrucoes: "Use console.log para imprimir a mensagem 'Olá, Mundo!' na tela.\n\n💡 Dica: console.log('texto') serve para mostrar algo na tela.",
     validar: (code) => {
       try {
@@ -20,7 +20,7 @@ export const Desafios = [
     }
   },
   {
-    titulo: "Desafio 2: Criando variáveis",
+    titulo: "Criando variáveis",
     instrucoes: "Crie uma variável chamada nome e atribua a ela o valor 'Maria'.\n\n💡 Dica: para criar variáveis usamos let ou const, exemplo: let idade = 20;",
     validar: (code) => {
       try {
@@ -35,7 +35,7 @@ export const Desafios = [
     }
   },
   {
-    titulo: "Desafio 3: Operações matemáticas",
+    titulo: "Operações matemáticas",
     instrucoes: "Crie uma variável soma que seja o resultado de 2 + 3.\n\n💡 Dica: você pode usar operadores matemáticos como +, -, *, / para calcular valores.",
     validar: (code) => {
       try {
@@ -50,7 +50,7 @@ export const Desafios = [
     }
   },
   {
-    titulo: "Desafio 4: Condicional simples",
+    titulo: "Condicional simples",
     instrucoes: "Crie uma variável idade com valor 18 e use if/else para imprimir 'maior de idade' se idade >= 18, senão 'menor de idade'.\n\n💡 Dica: estrutura básica:\nif (condicao) {\n  // código se for verdadeiro\n} else {\n  // código se for falso\n}",
     validar: (code) => {
       try {
@@ -70,7 +70,7 @@ export const Desafios = [
     }
   },
   {
-    titulo: "Desafio 5: Loop for",
+    titulo: "Loop for",
     instrucoes: "Use um loop for para imprimir os números de 1 a 5.\n\n💡 Dica: estrutura básica:\nfor (let i = 1; i <= 5; i++) {\n  console.log(i);\n}",
     validar: (code) => {
       try {
@@ -90,7 +90,7 @@ export const Desafios = [
     }
   },
   {
-    titulo: "Desafio 6: While loop",
+    titulo: "While loop",
     instrucoes: "Use um loop while para imprimir os números de 1 a 3.\n\n💡 Dica: estrutura básica:\nlet i = 1;\nwhile (i <= 3) {\n  console.log(i);\n  i++;\n}",
     validar: (code) => {
       try {
@@ -110,7 +110,7 @@ export const Desafios = [
     }
   },
   {
-    titulo: "Desafio 7: Arrays básicos",
+    titulo: "Arrays básicos",
     instrucoes: "Crie um array chamado frutas contendo 'maçã', 'banana' e 'laranja'.\n\n💡 Dica: arrays guardam listas de valores. Exemplo: let numeros = [1, 2, 3];",
     validar: (code) => {
       try {
@@ -125,7 +125,7 @@ export const Desafios = [
     }
   },
   {
-    titulo: "Desafio 8: Acessando elementos do array",
+    titulo: "Acessando elementos do array",
     instrucoes: "Crie um array numeros com os valores 10, 20 e 30. Imprima o segundo valor do array.\n\n💡 Dica: para acessar usamos índices, começando do 0. Exemplo: numeros[1] pega o segundo valor.",
     validar: (code) => {
       try {
@@ -145,7 +145,7 @@ export const Desafios = [
     }
   },
   {
-    titulo: "Desafio 9: Funções básicas",
+    titulo: "Funções básicas",
     instrucoes: "Crie uma função chamada saudacao que recebe um nome e imprime 'Olá, ' seguido do nome.\n\n💡 Dica: funções são criadas assim:\nfunction nomeDaFuncao(parametro) {\n  // código\n}",
     validar: (code) => {
       try {
@@ -166,7 +166,7 @@ export const Desafios = [
     }
   },
   {
-    titulo: "Desafio 10: Função com retorno",
+    titulo: "Função com retorno",
     instrucoes: "Crie uma função chamada dobro que recebe um número e retorna o dobro dele.\n\n💡 Dica: para retornar um valor usamos return. Exemplo:\nfunction soma(a, b) {\n  return a + b;\n}",
     validar: (code) => {
       try {
