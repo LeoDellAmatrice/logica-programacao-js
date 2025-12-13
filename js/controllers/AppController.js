@@ -1,4 +1,8 @@
+import { ErrorTranslator } from "../core/ErrorTranslator.js";
+
 export function AppController(editor, desafios, feedback, output) {
+
+    const errorTranslator = ErrorTranslator();
 
     function carregarDesafio() {
         const dados = desafios.getDados();
@@ -43,11 +47,14 @@ export function AppController(editor, desafios, feedback, output) {
             output.set(fakeConsole._output || "Código rodou sem saída.");
         } catch (e) {
             const info = extrairLinhaColuna(e);
+            const mensagemAmigavel = errorTranslator.traduzir(e);
 
             if (info) {
                 editor.destacarLinha(info.linha);
                 output.set(
-                    `Erro na linha ${info.linha}, coluna ${info.coluna}:\n${e.message}`
+                    `Erro na linha ${info.linha}:\n` +
+                    `${mensagemAmigavel}\n\n` +
+                    `Detalhe técnico: ${e.message}`
                 );
             } else {
                 output.set("Erro:\n" + e.message);
