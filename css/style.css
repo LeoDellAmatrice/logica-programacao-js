@@ -95,6 +95,11 @@ main {
   text-align: center;
 }
 
+#instrucoes {
+  white-space: pre;
+  text-wrap: wrap;
+}
+
 @media (max-width: 900px) {
   .workspace {
     flex-direction: column;
