@@ -5,59 +5,8 @@
   font-size: 14px;
   border-radius: 8px;
   border: 1px solid #333;
-  color: #1c1c1c !important;   /* texto padrão */
 }
 
-/* Gutter (números de linha) */
-.CodeMirror-gutters {
-  background: #141414;
-  border-right: 1px solid #333;
+.linha-erro {
+  background: rgba(255, 0, 0, 0.15);
 }
-
-.CodeMirror-linenumber {
-  color: #888;
-}
-
-.codeMirror-Dark .CodeMirror {
-  background: #111 !important;   /* fundo do editor tema escuro */
-}
-
-.codeMirror-Dark .CodeMirror-gutters {
-  background: #1a1a1a;
-  border-right: 1px solid #333;
-}
-
-.codeMirror-Dark .CodeMirror-linenumber {
-  color: #555;
-}
-
-/* Cursor e seleção */
-.codeMirror-Dark .CodeMirror-cursor { border-left: 2px solid #979797 !important; } /* cursor amarelo */
-.CodeMirror-selected { background: rgba(247, 223, 30, 0.2) !important; }
-
-/* Syntax highlighting básica inspirada em JS */
-.cm-s-default .cm-comment { color: #159829 !important; }
-.cm-s-default .cm-number  { color: #3385ae !important; }   /* números: amarelo claro */
-.cm-s-default .cm-string  { color: #844302 !important; }   /* strings: verde suave */
-.cm-s-default .cm-keyword { color: #170ce7 !important; font-weight: 600; } /* keywords: amarelo JS */
-.cm-s-default .cm-def     { color: #619dde !important; }   /* definições: azul suave */
-.cm-s-default .cm-variable { color: #2d2d2d !important; }  /* variáveis */
-.cm-s-default .cm-operator { color: #1c1c1c !important; }  /* operadores */
-
-
-.cm-s-dark {
-  background: #111 !important;   /* fundo do editor tema escuro */
-  color: #ffffff !important;                /* texto padrão */
-}
-.cm-s-dark .cm-comment { color: #509349 !important; }
-.cm-s-dark .cm-number  { color: #74ea8e !important; }   /* números: amarelo claro */
-.cm-s-dark .cm-string  { color: #d19457 !important; }   /* strings: verde suave */
-.cm-s-dark .cm-keyword { color: #2a43a8 !important; font-weight: 600; } /* keywords: amarelo JS */
-.cm-s-dark .cm-def     { color: #4fa1e4 !important; }   /* definições: azul suave */
-.cm-s-dark .cm-variable { color: #7ab2fb !important; }  /* variáveis */
-.cm-s-dark .cm-operator { color: #e6e6e6 !important; }  /* operadores */
-.cm-s-dark .cm-atom { color: #3e41d7 !important; }  /* False True */
-.cm-s-dark .cm-property { color: #d4d4d4 !important; }  /* propriedades de objetos */
-
-/* Barra de rolagem sutil */
-.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler { background: #111; }
