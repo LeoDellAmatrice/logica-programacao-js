@@ -15,7 +15,6 @@ export function AppController(editor, desafios, feedback, output) {
 
         feedback.clear();
         output.clear();
-        editor.setValue("// Escreva seu código aqui\n");
     }
 
     function extrairLinhaColuna(erro) {
@@ -57,7 +56,7 @@ export function AppController(editor, desafios, feedback, output) {
                     `Detalhe técnico: ${e.message}`
                 );
             } else {
-                output.set("Erro:\n" + e.message);
+                output.set(`Erro: ${e.message} \n${mensagemAmigavel}`);
             }
         }
 

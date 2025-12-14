@@ -7,16 +7,19 @@ export function ErrorTranslator() {
 
     switch (erro.name) {
       case "ReferenceError":
-        return traduzirReferenceError(erro);
+        return traduzirReferenceError(erro.message);
 
       case "SyntaxError":
-        return traduzirSyntaxError(erro);
+        return traduzirSyntaxError(erro.message);
 
       case "TypeError":
-        return traduzirTypeError(erro);
+        return traduzirTypeError(erro.message);
+
+      case "RangeError":
+        return "O código entrou em um loop infinito ou usou um valor inválido."
 
       default:
-        return `Erro: ${erro.message}`;
+        return `Erro: ${erro} msg:${erro.message}`;
     }
   }
 
@@ -24,28 +27,35 @@ export function ErrorTranslator() {
   // ERROS ESPECÍFICOS
   // =========================
 
-  function traduzirReferenceError(erro) {
-    const match = erro.message.match(/(.+) is not defined/);
+  function traduzirReferenceError(msg) {
 
-    if (match) {
+    if (msg.match(/(.+) is not defined/)) {
       return `Você usou a variável "${match[1]}", mas ela não foi criada antes.`;
     }
 
     return "Você tentou usar algo que não existe.";
   }
 
-  function traduzirSyntaxError(erro) {
-    return (
-      "Erro de sintaxe: parece que há um problema na escrita do código. " +
-      "Verifique parênteses (), chaves {} e ponto e vírgula."
-    );
+  function traduzirSyntaxError(msg) {
+    
+    if (msg.startsWith("Unexpected token")) {
+      return "Há um símbolo em um lugar inesperado no código.";
+    }
+    if (msg.includes("Unexpected end of input")) {
+      return "O código terminou antes de fechar todas as chaves ou parênteses.";
+    }
+
+    return "Erro de escrita no código. Verifique parênteses e chaves.";
   }
 
-  function traduzirTypeError(erro) {
-    return (
-      "Erro de tipo: você tentou usar algo de uma forma inválida. " +
-      "Por exemplo, chamar algo que não é uma função."
-    );
+  function traduzirTypeError(msg) {
+    if (msg.includes("is not a function")) {
+      return "Você tentou chamar algo como função, mas isso não é uma função.";
+    }
+    if (msg.includes("Cannot read properties")) {
+      return "Você tentou acessar uma propriedade de algo que não existe.";
+    }
+    return "Você usou algo de uma forma inválida.";
   }
 
   return {
