@@ -3,6 +3,7 @@ import { StorageFactory } from "./core/StorageFactory.js";
 import { DesafioFactory } from "./core/DesafioFactory.js";
 import { Feedback } from "./ui/Feedback.js";
 import { Output } from "./ui/Output.js";
+import { ModalFactory } from "./ui/Modal.js";
 import { AppController } from "./controllers/AppController.js";
 
 window.onload = () => {
@@ -15,6 +16,9 @@ window.onload = () => {
   const desafios = DesafioFactory(storage);
   const feedback = Feedback();
   const output = Output(editor, feedback);
+  const modal = ModalFactory();
+
+  modal.needOpen();
 
   const app = AppController(editor, desafios, feedback, output);
   app.carregarDesafio();
@@ -22,6 +26,16 @@ window.onload = () => {
   document.getElementById("btn-executar").onclick = app.executar;
   document.getElementById("btn-proximo").onclick = app.proximoDesafio;
   document.getElementById("btn-anterior").onclick = app.desafioAnterior;
+  
+  document.addEventListener("keydown",  function(e) {
+
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") app.executar();
+
+    if ((e.ctrlKey || e.metaKey) && e.key === "ArrowRight") app.proximoDesafio();
+
+    if ((e.ctrlKey || e.metaKey) && e.key === "ArrowLeft") app.desafioAnterior();
+
+  });
 
   document.getElementById("btn-theme-editor").onclick = editor.toggleTheme;
   document.getElementById("btn-limpar-console").onclick = output.clear;
