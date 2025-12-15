@@ -1,12 +1,56 @@
 /* A instância do CodeMirror se adapta ao container */
 .CodeMirror {
+  font-family: monospace, !important;
   height: 100% !important;
   min-height: 300px;
   font-size: 14px;
   border-radius: 8px;
   border: 1px solid #333;
+  font-variant-ligatures: contextual;
 }
 
 .linha-erro {
   background: rgba(255, 0, 0, 0.15);
+}
+
+.CodeMirror-selected {
+  background: rgb(255, 0, 0);
+}
+
+.CodeMirror-hints {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  list-style: none;
+
+  margin: 0;
+  padding: 2px;
+
+  -webkit-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+  -moz-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+  box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+  border-radius: 3px;
+  border: 1px solid rgb(58, 58, 58);
+
+  background: rgb(37, 37, 37);
+  font-size: 90%;
+  font-family: monospace;
+
+  max-height: 20em;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.CodeMirror-hint {
+  margin: 0;
+  padding: 0 4px;
+  border-radius: 2px;
+  white-space: pre;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+li.CodeMirror-hint-active {
+  background: rgb(0, 107, 201);
+  color: white;
 }
