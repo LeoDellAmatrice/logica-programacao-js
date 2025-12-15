@@ -28,8 +28,9 @@ export function ErrorTranslator() {
   // =========================
 
   function traduzirReferenceError(msg) {
+    const match = msg.match(/(.+) is not defined/);
 
-    if (msg.match(/(.+) is not defined/)) {
+    if (match) {
       return `Você usou a variável "${match[1]}", mas ela não foi criada antes.`;
     }
 
