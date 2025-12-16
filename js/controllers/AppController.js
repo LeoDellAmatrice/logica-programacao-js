@@ -66,6 +66,7 @@ export function AppController(editor, desafios, feedback, output) {
 
             if (valido) {
                 desafios.avancar();
+                editor.addToAutoComplete(desafios.getDadosUnlock());
                 feedback.show("Parabéns! Você completou o desafio.", "success");
             } else {
                 feedback.show("Ainda não está certo. Tente novamente.", "error");

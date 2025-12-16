@@ -13,7 +13,16 @@ const PALAVRAS_PERMITIDAS = [
 ];
 
 export function EditorFactory() {
+
     let editor = null;
+
+    let palavrasAutoComplete = [];
+
+    function addToAutoComplete(list){
+        list.forEach(word => {
+            palavrasAutoComplete.push(word)
+        });
+    }
 
     function create(elementId, {
         theme = "railscasts",
@@ -63,7 +72,7 @@ export function EditorFactory() {
         const fim = cursor.ch;
         const palavraAtual = token.string;
 
-        const sugestoes = PALAVRAS_PERMITIDAS
+        const sugestoes = palavrasAutoComplete
             .filter(p => p.startsWith(palavraAtual))
             .map(p => ({
             text: p,
@@ -104,6 +113,7 @@ export function EditorFactory() {
 
     return {
         create,
+        addToAutoComplete,
         getValue,
         setValue,
         toggleTheme,

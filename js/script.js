@@ -20,6 +20,8 @@ window.onload = () => {
 
   modal.needOpen();
 
+  editor.addToAutoComplete(desafios.getAllUnlock())
+
   const app = AppController(editor, desafios, feedback, output);
   app.carregarDesafio();
 

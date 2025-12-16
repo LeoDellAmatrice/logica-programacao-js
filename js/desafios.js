@@ -2,6 +2,7 @@ export const Desafios = [
   {
     titulo: "Olá Mundo",
     instrucoes: "Use console.log para imprimir a mensagem 'Olá, Mundo!' na tela.\n\n💡 Dica: console.log('texto') serve para mostrar algo na tela.",
+    unlockComplete: ['console', '.log', 'log'],
     validar: (code) => {
       try {
         const func = new Function("console", `
@@ -22,6 +23,7 @@ export const Desafios = [
   {
     titulo: "Criando variáveis",
     instrucoes: "Crie uma variável chamada nome e atribua a ela o valor 'Maria'.\n\n💡 Dica: para criar variáveis usamos let ou const, exemplo: let idade = 20;",
+    unlockComplete: ['let', 'const'],
     validar: (code) => {
       try {
         const func = new Function(`
@@ -37,6 +39,7 @@ export const Desafios = [
   {
     titulo: "Operações matemáticas",
     instrucoes: "Crie uma variável soma que seja o resultado de 2 + 3.\n\n💡 Dica: você pode usar operadores matemáticos como +, -, *, / para calcular valores.",
+    unlockComplete: [],
     validar: (code) => {
       try {
         const func = new Function(`
@@ -52,6 +55,7 @@ export const Desafios = [
   {
     titulo: "Condicional simples",
     instrucoes: "Crie uma variável idade com valor 18 e use if/else para imprimir 'maior de idade' se idade >= 18, senão 'menor de idade'.\n\n💡 Dica: estrutura básica:\nif (condicao) {\n  // código se for verdadeiro\n} else {\n  // código se for falso\n}",
+    unlockComplete: ['if', 'else'],
     validar: (code) => {
       try {
         const func = new Function("console", `
@@ -72,6 +76,7 @@ export const Desafios = [
   {
     titulo: "Loop for",
     instrucoes: "Use um loop for para imprimir os números de 1 a 5.\n\n💡 Dica: estrutura básica:\nfor (let i = 1; i <= 5; i++) {\n  console.log(i);\n}",
+    unlockComplete: ['for'],
     validar: (code) => {
       try {
         const func = new Function("console", `
@@ -92,6 +97,7 @@ export const Desafios = [
   {
     titulo: "While loop",
     instrucoes: "Use um loop while para imprimir os números de 1 a 3.\n\n💡 Dica: estrutura básica:\nlet i = 1;\nwhile (i <= 3) {\n  console.log(i);\n  i++;\n}",
+    unlockComplete: ['while'],
     validar: (code) => {
       try {
         const func = new Function("console", `
@@ -147,6 +153,7 @@ export const Desafios = [
   {
     titulo: "Funções básicas",
     instrucoes: "Crie uma função chamada saudacao que recebe um nome e imprime 'Olá, ' seguido do nome.\n\n💡 Dica: funções são criadas assim:\nfunction nomeDaFuncao(parametro) {\n  // código\n}",
+    unlockComplete: ['function'],
     validar: (code) => {
       try {
         const func = new Function("console", `
@@ -168,6 +175,7 @@ export const Desafios = [
   {
     titulo: "Função com retorno",
     instrucoes: "Crie uma função chamada dobro que recebe um número e retorna o dobro dele.\n\n💡 Dica: para retornar um valor usamos return. Exemplo:\nfunction soma(a, b) {\n  return a + b;\n}",
+    unlockComplete: ['return'],
     validar: (code) => {
       try {
         const func = new Function(`

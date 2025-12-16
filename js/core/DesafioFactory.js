@@ -11,6 +11,23 @@ export function DesafioFactory(storage) {
     return Desafios[atual];
   }
 
+  function getDadosUnlock(){
+    return Desafios[atual].unlockComplete || []
+  }
+
+  function getAllUnlock(){
+
+    let listAllUnlock = []
+
+    for (let i = 0; i<=Number(atual)-1;i++){
+      Desafios[i].unlockComplete.forEach(word => {
+        listAllUnlock.push(word)
+      });
+    }
+
+    return listAllUnlock
+  }
+
   function podeAvancar() {
     return atual < storage.get();
   }
@@ -42,6 +59,8 @@ export function DesafioFactory(storage) {
   return {
     getAtual,
     getDados,
+    getAllUnlock,
+    getDadosUnlock,
     podeAvancar,
     avancar,
     proximo,
