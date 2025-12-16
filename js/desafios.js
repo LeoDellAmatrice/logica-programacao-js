@@ -118,6 +118,7 @@ export const Desafios = [
   {
     titulo: "Arrays básicos",
     instrucoes: "Crie um array chamado frutas contendo 'maçã', 'banana' e 'laranja'.\n\n💡 Dica: arrays guardam listas de valores. Exemplo: let numeros = [1, 2, 3];",
+    unlockComplete: [],
     validar: (code) => {
       try {
         const func = new Function(`
@@ -133,6 +134,7 @@ export const Desafios = [
   {
     titulo: "Acessando elementos do array",
     instrucoes: "Crie um array numeros com os valores 10, 20 e 30. Imprima o segundo valor do array.\n\n💡 Dica: para acessar usamos índices, começando do 0. Exemplo: numeros[1] pega o segundo valor.",
+    unlockComplete: [],
     validar: (code) => {
       try {
         const func = new Function("console", `
