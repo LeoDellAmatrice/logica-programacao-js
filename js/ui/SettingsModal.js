@@ -1,3 +1,5 @@
+import { settingsStore } from '../core/SettingsStore.js';
+
 export function SettingsModalFactory(SettingsFactory) {
 
     let modalElement = null;
@@ -36,11 +38,7 @@ export function SettingsModalFactory(SettingsFactory) {
 
                 <div class="config-item">
                 <span>Tamanho da Fonte</span>
-                <select class="config-select" id="config-font-size">
-                    <option value="12">Pequena</option>
-                    <option value="14" selected>Média</option>
-                    <option value="16">Grande</option>
-                </select>
+                <input id="config-font-size" class='config-input' type="number" value="16" min='10' max='60'>
                 </div>
             </div>
 
@@ -51,7 +49,7 @@ export function SettingsModalFactory(SettingsFactory) {
                 <label class="checkbox-container">
                 <input type="checkbox" id="config-autocomplete">
                 <span class="checkmark"></span>
-                <span class="checkbox-text">Autocomplete automático</span>
+                <span class="checkbox-text">Autocomplete</span>
                 </label>
 
                 <label class="checkbox-container">
@@ -89,6 +87,8 @@ export function SettingsModalFactory(SettingsFactory) {
 
         document.body.appendChild(modalElement);
 
+        initConfigs();
+
         initModalButtons();
 
     }
@@ -104,6 +104,19 @@ export function SettingsModalFactory(SettingsFactory) {
 
     function resetConfig(){
         throw new Error("Nao Implementado");
+    }
+
+    function initConfigs(){
+
+        const settings = settingsStore.getAll()
+
+        document.getElementById('config-theme').value = settings.theme;
+
+        document.getElementById("config-font-size").value = settings.fontSize;
+
+        document.getElementById("config-autocomplete").checked = settings.autocomplete;
+
+        document.getElementById('config-highlight-line').checked = settings.highlightLine;
     }
 
     function initModalButtons() {

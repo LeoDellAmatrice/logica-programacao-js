@@ -443,13 +443,21 @@
 }
 
 /* Select */
-.config-select {
+.config-select, .config-input {
   background: rgba(0,0,0,0.3);
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 6px;
   padding: 6px 10px;
   color: white;
   font-family: inherit;
+  width: 30%;
+}
+
+#config-font-size::after {
+    height: 50px;
+    width: 50px;
+    font-size: 16px;
+    content: 'px';
 }
 
 /* Botão de perigo */

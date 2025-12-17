@@ -1,6 +1,7 @@
 export function EditorFactory() {
 
     let editor = null;
+    let autocompleteEnabled = true;
     let palavrasAutoComplete = [];
 
     function addToAutoComplete(list) {
@@ -35,6 +36,7 @@ export function EditorFactory() {
         editor.getWrapperElement().id = "codeMirrorEditor";
 
         editor.on('inputRead', function (cm, change) {
+            if (!autocompleteEnabled) return;
             if (
                 change.text[0] === '.' ||
                 /[a-zA-Z_]/.test(change.text[0])
@@ -101,6 +103,9 @@ export function EditorFactory() {
     }
 
     function setAutocomplete(enabled) {
+
+        autocompleteEnabled = enabled;
+
         editor.setOption('extraKeys', enabled ? {
         'Ctrl-Space': 'autocomplete'
         } : {});

@@ -17,6 +17,8 @@ window.onload = () => {
   const Settings = SettingsFactory(editor);
   const SettingsModal = SettingsModalFactory(Settings);
 
+  Settings.applyAll()
+
   const storage = StorageFactory();
   const desafios = DesafioFactory(storage);
   const feedback = Feedback();
