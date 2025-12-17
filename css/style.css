@@ -16,10 +16,22 @@ body {
 header {
   background: #f7df1e;        /* amarelo JS */
   color: #1a1a1a;             /* quase preto para contraste */
-  padding: 10px;
+  padding: 10px 50px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 header .subtitle { font-size: 14px; opacity: 0.9; }
+
+#icon-setting {
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+#icon-setting:hover{
+  transform: scale(1.07);
+}
 
 /* Container principal */
 main {

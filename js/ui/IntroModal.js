@@ -1,6 +1,6 @@
 const INTRO_KEY = "intro_modal_v1";
 
-export function ModalFactory() {
+export function IntroModalFactory() {
 
     let modalElement = null;
     let paginaAtual = 1;
@@ -19,14 +19,14 @@ export function ModalFactory() {
             <!-- Cabeçalho fixo -->
             <div class="modal-cabecalho">
             <img src="assets/img/logo_01js.png" width="36" heigth="36">
-            <h2 id="modal-titulo">Bem-vindo ao CodeLogic!</h2>
+            <h2 id="intro-modal-titulo">Bem-vindo ao CodeLogic!</h2>
             <div class="modal-indicadores">
                 <span class="indicador ativo" data-pagina="1"></span>
                 <span class="indicador" data-pagina="2"></span>
                 <span class="indicador" data-pagina="3"></span>
                 <span class="indicador" data-pagina="4"></span>
             </div>
-            <button class="modal-fechar" id="modal-fechar">&times;</button>
+            <button class="modal-fechar" id="intro-modal-fechar">&times;</button>
             </div>
             
             <!-- Container das páginas -->
@@ -151,13 +151,13 @@ export function ModalFactory() {
             </div>
             
             <div class="modal-navegacao">
-                <button class="btn btn-secundario" id="modal-anterior">
+                <button class="btn btn-secundario" id="intro-modal-anterior">
                 <span class="seta">←</span> Anterior
                 </button>
-                <button class="btn btn-primario" id="modal-proximo">
+                <button class="btn btn-primario" id="intro-modal-proximo">
                 Próximo <span class="seta">→</span>
                 </button>
-                <button class="btn btn-sucesso" id="modal-comecar" style="display: none;">
+                <button class="btn btn-sucesso" id="intro-modal-comecar" style="display: none;">
                 Começar a Programar!
                 </button>
             </div>
@@ -211,11 +211,11 @@ export function ModalFactory() {
 
     function initModalNavigation() {
 
-        document.getElementById('modal-proximo').addEventListener('click', nextPage);
+        document.getElementById('intro-modal-proximo').addEventListener('click', nextPage);
 
-        document.getElementById('modal-anterior').addEventListener('click', previousPage);
+        document.getElementById('intro-modal-anterior').addEventListener('click', previousPage);
 
-        document.getElementById('modal-comecar').addEventListener('click', () => {
+        document.getElementById('intro-modal-comecar').addEventListener('click', () => {
             closeModal(document.getElementById('nao-mostrar-novamente').checked);
         });
 
@@ -227,7 +227,7 @@ export function ModalFactory() {
             });
         });
 
-        document.getElementById('modal-fechar').addEventListener('click', () => {
+        document.getElementById('intro-modal-fechar').addEventListener('click', () => {
             closeModal();
         });
 
@@ -278,12 +278,12 @@ export function ModalFactory() {
             "Atalhos e Dicas",
             "Pronto para Começar?"
         ];
-        document.getElementById('modal-titulo').textContent = titulos[paginaAtual - 1];
+        document.getElementById('intro-modal-titulo').textContent = titulos[paginaAtual - 1];
 
         // Atualizar botões
-        const btnAnterior = document.getElementById('modal-anterior');
-        const btnProximo = document.getElementById('modal-proximo');
-        const btnComecar = document.getElementById('modal-comecar');
+        const btnAnterior = document.getElementById('intro-modal-anterior');
+        const btnProximo = document.getElementById('intro-modal-proximo');
+        const btnComecar = document.getElementById('intro-modal-comecar');
 
         btnAnterior.style.display = paginaAtual === 1 ? 'none' : 'flex';
         btnProximo.style.display = paginaAtual === totalPaginas ? 'none' : 'flex';

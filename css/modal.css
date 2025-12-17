@@ -297,7 +297,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 18px;
     cursor: pointer;
     color: #e5e7eb;
 }
@@ -395,4 +394,71 @@
     .btn {
         width: 100%;
     }
+}
+
+
+/* Modal específico de configurações */
+.modal-config {
+  max-width: 520px;
+}
+
+/* Conteúdo principal */
+.modal-config-conteudo {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Seções */
+.config-secao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.config-secao h3 {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 5px;
+}
+
+/* Item padrão */
+.config-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.04);
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Item de alerta */
+.config-item.alerta {
+  background: rgba(255, 80, 80, 0.08);
+}
+
+/* Select */
+.config-select {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: white;
+  font-family: inherit;
+}
+
+/* Botão de perigo */
+.btn-danger {
+  background: rgba(255, 80, 80, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 80, 80, 0.4);
+}
+
+.btn-danger:hover {
+  background: rgba(255, 80, 80, 0.25);
 }

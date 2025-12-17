@@ -3,7 +3,8 @@ import { StorageFactory } from "./core/StorageFactory.js";
 import { DesafioFactory } from "./core/DesafioFactory.js";
 import { Feedback } from "./ui/Feedback.js";
 import { Output } from "./ui/Output.js";
-import { ModalFactory } from "./ui/Modal.js";
+import { IntroModalFactory } from "./ui/IntroModal.js";
+import { SettingsModalFactory } from "./ui/SettingsModal.js"
 import { AppController } from "./controllers/AppController.js";
 
 window.onload = () => {
@@ -16,14 +17,18 @@ window.onload = () => {
   const desafios = DesafioFactory(storage);
   const feedback = Feedback();
   const output = Output(editor, feedback);
-  const modal = ModalFactory();
+  const IntroModal = IntroModalFactory();
+  const SettingsModal = SettingsModalFactory();
 
-  modal.needOpen();
+  IntroModal.needOpen();
 
   editor.addToAutoComplete(desafios.getAllUnlock())
 
   const app = AppController(editor, desafios, feedback, output);
+
   app.carregarDesafio();
+
+  document.getElementById("icon-setting").onclick = SettingsModal.show;
 
   document.getElementById("btn-executar").onclick = app.executar;
   document.getElementById("btn-proximo").onclick = app.proximoDesafio;
