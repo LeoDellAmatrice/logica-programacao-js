@@ -1,27 +1,12 @@
-const PALAVRAS_PERMITIDAS = [
-  'console',
-  '.log',
-  'log',
-  'let',
-  'const',
-  'if',
-  'else',
-  'for',
-  'while',
-  'function',
-  'return'
-];
-
 export function EditorFactory() {
 
     let editor = null;
-
     let palavrasAutoComplete = [];
 
-    function addToAutoComplete(list){
-        list.forEach(word => {
-            palavrasAutoComplete.push(word)
-        });
+    function addToAutoComplete(list) {
+        palavrasAutoComplete = Array.from(
+            new Set([...palavrasAutoComplete, ...list])
+        );
     }
 
     function create(elementId, {
@@ -111,6 +96,24 @@ export function EditorFactory() {
         editor.scrollIntoView({ line: linha - 1, ch: 0 }, 100);
     }
 
+    function setFontSize(size) {
+        editor.getWrapperElement().style.fontSize = size + 'px';
+    }
+
+    function setAutocomplete(enabled) {
+        editor.setOption('extraKeys', enabled ? {
+        'Ctrl-Space': 'autocomplete'
+        } : {});
+    }
+
+    function setHighlightLine(enabled) {
+        editor.setOption('styleActiveLine', enabled);
+    }
+
+    function setTheme(theme) {
+        editor.setOption("theme", theme);
+    }
+
     return {
         create,
         addToAutoComplete,
@@ -118,6 +121,10 @@ export function EditorFactory() {
         setValue,
         toggleTheme,
         destacarLinha,
-        limparDestaques
+        limparDestaques,
+        setTheme,
+        setFontSize,
+        setAutocomplete,
+        setHighlightLine
     };
 }

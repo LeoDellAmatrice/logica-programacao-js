@@ -5,6 +5,7 @@ import { Feedback } from "./ui/Feedback.js";
 import { Output } from "./ui/Output.js";
 import { IntroModalFactory } from "./ui/IntroModal.js";
 import { SettingsModalFactory } from "./ui/SettingsModal.js"
+import { SettingsFactory } from "./core/SettingsFactory.js";
 import { AppController } from "./controllers/AppController.js";
 
 window.onload = () => {
@@ -13,12 +14,14 @@ window.onload = () => {
     value: "// Bem-vindo!\n"
   });
 
+  const Settings = SettingsFactory(editor);
+  const SettingsModal = SettingsModalFactory(Settings);
+
   const storage = StorageFactory();
   const desafios = DesafioFactory(storage);
   const feedback = Feedback();
   const output = Output(editor, feedback);
   const IntroModal = IntroModalFactory();
-  const SettingsModal = SettingsModalFactory();
 
   IntroModal.needOpen();
 

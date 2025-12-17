@@ -1,8 +1,4 @@
-export function SettingsModalFactory() {
-
-    let configs = {
-        'fonte': 'default'
-    }
+export function SettingsModalFactory(SettingsFactory) {
 
     let modalElement = null;
     
@@ -32,17 +28,18 @@ export function SettingsModalFactory() {
 
                 <div class="config-item">
                 <span>Tema do Editor</span>
-                <button class="btn btn-secundario" id="config-toggle-theme">
-                    Alternar Tema
-                </button>
+                <select class="config-select" id="config-theme">
+                    <option value="Default">Light</option>
+                    <option value="railscasts" selected>Dark</option>
+                </select>
                 </div>
 
                 <div class="config-item">
                 <span>Tamanho da Fonte</span>
                 <select class="config-select" id="config-font-size">
-                    <option value="14">Pequena</option>
-                    <option value="16" selected>Média</option>
-                    <option value="18">Grande</option>
+                    <option value="12">Pequena</option>
+                    <option value="14" selected>Média</option>
+                    <option value="16">Grande</option>
                 </select>
                 </div>
             </div>
@@ -80,11 +77,8 @@ export function SettingsModalFactory() {
 
             <!-- Rodapé -->
             <div class="modal-rodape">
-            <button class="btn btn-secundario" id="config-cancelar">
-                Cancelar
-            </button>
-            <button class="btn btn-primario" id="config-salvar">
-                Salvar alterações
+            <button class="btn btn-primario" id="config-sair">
+                Sair
             </button>
             </div>
 
@@ -95,7 +89,7 @@ export function SettingsModalFactory() {
 
         document.body.appendChild(modalElement);
 
-        initModalNavigation();
+        initModalButtons();
 
     }
 
@@ -112,11 +106,29 @@ export function SettingsModalFactory() {
         throw new Error("Nao Implementado");
     }
 
-    function initModalNavigation() {
+    function initModalButtons() {
 
         document.getElementById('config-fechar').onclick = closeModal;
 
+        document.getElementById('config-sair').onclick = closeModal;
+
         document.getElementById("config-reset").onclick = resetConfig;
+
+        document.getElementById('config-theme').onchange = (e) => {
+            SettingsFactory.update('theme', e.target.value);
+        };
+
+        document.getElementById('config-font-size').onchange = (e) => {
+            SettingsFactory.update('fontSize', Number(e.target.value));
+        };
+
+        document.getElementById('config-autocomplete').onchange = (e) => {
+            SettingsFactory.update('autocomplete', e.target.checked);
+        };
+
+        document.getElementById('config-highlight-line').onchange = (e) => {
+            SettingsFactory.update('highlightLine', e.target.checked);
+        };
 
     }
 
