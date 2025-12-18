@@ -56,6 +56,12 @@ export function DesafioFactory(storage) {
     return atual >= Desafios.length - 1;
   }
 
+  function resetAll(){
+    storage.set(0);
+    atual = 0;
+    window.location.reload()
+  }
+
   return {
     getAtual,
     getDados,
@@ -66,6 +72,7 @@ export function DesafioFactory(storage) {
     proximo,
     anterior,
     validar,
-    isUltimo
+    isUltimo,
+    resetAll
   };
 }

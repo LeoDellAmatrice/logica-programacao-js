@@ -71,7 +71,7 @@ export function SettingsModalFactory(SettingsFactory) {
 
                 <div class="config-item alerta">
                 <span>Reiniciar progresso</span>
-                <button class="btn btn-danger" id="config-reset">
+                <button class="btn btn-danger" id="config-reset-desafio">
                     Resetar
                 </button>
                 </div>
@@ -81,8 +81,11 @@ export function SettingsModalFactory(SettingsFactory) {
 
             <!-- Rodapé -->
             <div class="modal-rodape">
+            <button class="btn btn-secundario" id="config-reset">
+                Resetar configurações
+            </button>
             <button class="btn btn-primario" id="config-sair">
-                Sair
+                Fechar
             </button>
             </div>
 
@@ -109,7 +112,10 @@ export function SettingsModalFactory(SettingsFactory) {
     }
 
     function resetConfig(){
-        throw new Error("Nao Implementado");
+        settingsStore.setDefault();
+        SettingsFactory.applyAll();
+
+        initConfigs();
     }
 
     function initConfigs(){
@@ -134,6 +140,8 @@ export function SettingsModalFactory(SettingsFactory) {
         document.getElementById('config-sair').onclick = closeModal;
 
         document.getElementById("config-reset").onclick = resetConfig;
+
+        document.getElementById("config-reset-desafio").onclick = SettingsFactory.resetDesafio;
 
         document.getElementById('config-theme').onchange = (e) => {
             SettingsFactory.update('theme', e.target.value);

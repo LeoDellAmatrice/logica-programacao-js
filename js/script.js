@@ -14,13 +14,16 @@ window.onload = () => {
     value: "// Bem-vindo!\n"
   });
 
-  const Settings = SettingsFactory(editor);
+
+  
+  const storage = StorageFactory();
+  const desafios = DesafioFactory(storage);
+  
+  const Settings = SettingsFactory(editor, desafios);
   const SettingsModal = SettingsModalFactory(Settings);
 
   Settings.applyAll()
 
-  const storage = StorageFactory();
-  const desafios = DesafioFactory(storage);
   const feedback = Feedback();
   const output = Output(editor, feedback);
   const IntroModal = IntroModalFactory();

@@ -35,6 +35,11 @@ class SettingsStore {
   getAll() {
     return { ...this.settings };
   }
+
+  setDefault() {
+    localStorage.setItem('settings', JSON.stringify(DEFAULT_SETTINGS));
+    this.load()
+  }
 }
 
 export const settingsStore = new SettingsStore();

@@ -1,6 +1,6 @@
 import { settingsStore } from '../core/SettingsStore.js';
 
-export function SettingsFactory(editor) {
+export function SettingsFactory(editor, desafios) {
   function applyAll() {
     const settings = settingsStore.getAll();
 
@@ -11,6 +11,10 @@ export function SettingsFactory(editor) {
     editor.setClearEditor(settings.clearEditor);
   }
 
+  function resetDesafio(){
+    desafios.resetAll();
+  }
+
   function update(key, value) {
     settingsStore.set(key, value);
     this.applyAll();
@@ -18,6 +22,7 @@ export function SettingsFactory(editor) {
 
   return {
     applyAll,
-    update
+    update,
+    resetDesafio
   }
 };
