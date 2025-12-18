@@ -2,7 +2,8 @@ const DEFAULT_SETTINGS = {
   theme: 'railscasts',
   fontSize: 16,
   autocomplete: true,
-  highlightLine: true
+  highlightLine: true,
+  clearEditor: false
 };
 
 class SettingsStore {

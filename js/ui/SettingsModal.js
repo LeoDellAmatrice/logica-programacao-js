@@ -57,6 +57,12 @@ export function SettingsModalFactory(SettingsFactory) {
                 <span class="checkmark"></span>
                 <span class="checkbox-text">Destacar linha atual</span>
                 </label>
+
+                <label class="checkbox-container">
+                <input type="checkbox" id="config-clear-editor">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Limpar editor ao passar de desafio</span>
+                </label>
             </div>
 
             <!-- Seção: Progresso -->
@@ -117,6 +123,8 @@ export function SettingsModalFactory(SettingsFactory) {
         document.getElementById("config-autocomplete").checked = settings.autocomplete;
 
         document.getElementById('config-highlight-line').checked = settings.highlightLine;
+
+        document.getElementById("config-clear-editor").checked = settings.clearEditor;
     }
 
     function initModalButtons() {
@@ -142,6 +150,10 @@ export function SettingsModalFactory(SettingsFactory) {
         document.getElementById('config-highlight-line').onchange = (e) => {
             SettingsFactory.update('highlightLine', e.target.checked);
         };
+
+        document.getElementById('config-clear-editor').onchange = (e) => {
+            SettingsFactory.update('clearEditor', e.target.checked)
+        }
 
     }
 

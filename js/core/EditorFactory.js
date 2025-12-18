@@ -2,6 +2,7 @@ export function EditorFactory() {
 
     let editor = null;
     let autocompleteEnabled = true;
+    let clearEditorEnabled = false;
     let palavrasAutoComplete = [];
 
     function addToAutoComplete(list) {
@@ -111,6 +112,16 @@ export function EditorFactory() {
         } : {});
     }
 
+    function setClearEditor(clear){
+        clearEditorEnabled = clear;
+    }
+
+    function clearEditor(){
+        if (!clearEditorEnabled) return;
+
+        editor.setValue("")
+    }
+
     function setHighlightLine(enabled) {
         editor.setOption('styleActiveLine', enabled);
     }
@@ -130,6 +141,8 @@ export function EditorFactory() {
         setTheme,
         setFontSize,
         setAutocomplete,
-        setHighlightLine
+        setHighlightLine,
+        setClearEditor,
+        clearEditor
     };
 }

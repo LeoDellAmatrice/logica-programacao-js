@@ -10,6 +10,7 @@ export function SettingsFactory(editor) {
     editor.setFontSize(settings.fontSize);
     editor.setAutocomplete(settings.autocomplete);
     editor.setHighlightLine(settings.highlightLine);
+    editor.setClearEditor(settings.clearEditor);
   }
 
   function update(key, value) {

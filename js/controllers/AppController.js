@@ -86,6 +86,7 @@ export function AppController(editor, desafios, feedback, output) {
         }
 
         desafios.proximo();
+        editor.clearEditor();
         carregarDesafio();
     }
 
