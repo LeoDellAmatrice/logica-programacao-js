@@ -49,6 +49,5 @@ window.onload = () => {
 
   });
 
-  document.getElementById("btn-theme-editor").onclick = editor.toggleTheme;
   document.getElementById("btn-limpar-console").onclick = output.clear;
 };
