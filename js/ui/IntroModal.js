@@ -50,7 +50,9 @@ export function IntroModalFactory() {
                 <h3>Como Funciona</h3>
                 
                 <div class="funcionalidade">
-                    <div class="func-icon">f</div>
+                    <div class="func-icon">
+                        <img src="assets/img/progression-icon.svg" alt="">
+                    </div>
                     <div class="func-texto">
                     <strong>Desafios Progressivos</strong>
                     <p>Comece do básico e avance em dificuldade</p>
@@ -58,7 +60,9 @@ export function IntroModalFactory() {
                 </div>
                 
                 <div class="funcionalidade">
-                    <div class="func-icon">f</div>
+                    <div class="func-icon">
+                        <img src="assets/img/save-icon.svg" alt="">
+                    </div>
                     <div class="func-texto">
                     <strong>Progresso Salvo</strong>
                     <p>Continue de onde parou a qualquer momento</p>
@@ -66,10 +70,12 @@ export function IntroModalFactory() {
                 </div>
                 
                 <div class="funcionalidade">
-                    <div class="func-icon">f</div>
+                    <div class="func-icon">
+                        <img src="assets/img/code-icon.svg" alt="">
+                    </div>
                     <div class="func-texto">
-                    <strong>Tema Personalizável</strong>
-                    <p>Escolha entre tema claro ou escuro</p>
+                    <strong>Autocomplete Progressivo</strong>
+                    <p>Desbloqueie palavras ao completar desafios</p>
                     </div>
                 </div>
                 </div>
@@ -108,7 +114,7 @@ export function IntroModalFactory() {
                 </div>
                 
                 <p class="pagina-nota">
-                    Use os botões de navegação para ir para o próximo ou anterior desafio.
+                    Ou use os botões de navegação para ir para o próximo ou voltar para o desafio anterior.
                 </p>
                 </div>
             </div>
@@ -241,9 +247,9 @@ export function IntroModalFactory() {
         // Navegação com setas
         document.addEventListener('keydown', (e) => {
 
-            if (e.key === 'ArrowRight') nextPage();
+            if (!(e.ctrlKey || e.metaKey) && e.key === 'ArrowRight') nextPage();
 
-            if (e.key === 'ArrowLeft') previousPage();
+            if (!(e.ctrlKey || e.metaKey) && e.key === 'ArrowLeft') previousPage();
         });
 
         // Inicializar

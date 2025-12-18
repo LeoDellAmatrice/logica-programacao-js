@@ -81,7 +81,7 @@ export function SettingsModalFactory(SettingsFactory) {
 
             <!-- Rodapé -->
             <div class="modal-rodape">
-            <button class="btn btn-secundario" id="config-reset">
+            <button class="btn btn-danger" id="config-reset">
                 Resetar configurações
             </button>
             <button class="btn btn-primario" id="config-sair">

@@ -112,6 +112,7 @@
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.25);
     transition: all 1s;
+    cursor: pointer;
 }
 
 .indicador.ativo {
@@ -212,8 +213,8 @@
 }
 
 .func-icon {
-    width: 44px;
-    height: 44px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     background: rgba(79, 140, 255, 0.15);
     color: #4f8cff;
@@ -221,6 +222,11 @@
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
+}
+
+.func-icon img{
+    width: 44px;
+    height: 44px;
 }
 
 .func-texto strong {
@@ -444,14 +450,15 @@
 
 /* Select */
 .config-select, .config-input {
-  background: rgba(0,0,0,0.3);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgb(23, 25, 43);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   padding: 6px 10px;
   color: white;
   font-family: inherit;
   width: 30%;
 }
+
 
 #config-font-size::after {
     height: 50px;
@@ -468,5 +475,6 @@
 }
 
 .btn-danger:hover {
-  background: rgba(255, 80, 80, 0.25);
+  background: rgba(172, 31, 31, 0.596);
+  color: #ff3131;
 }
