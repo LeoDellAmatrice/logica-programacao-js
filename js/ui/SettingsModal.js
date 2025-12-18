@@ -64,6 +64,17 @@ export function SettingsModalFactory(SettingsFactory) {
                 <span class="checkbox-text">Limpar editor ao passar de desafio</span>
                 </label>
             </div>
+            
+            <!-- Seção: FeedBack -->
+            <div class="config-secao">
+                <h3>FeedBack</h3>
+
+                <label class="checkbox-container">
+                <input type="checkbox" id="config-hide-pop-up">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Esconder PopUp (Não recomendado para novos usuarios)</span>
+                </label>
+            </div>
 
             <!-- Seção: Progresso -->
             <div class="config-secao">
@@ -131,6 +142,8 @@ export function SettingsModalFactory(SettingsFactory) {
         document.getElementById('config-highlight-line').checked = settings.highlightLine;
 
         document.getElementById("config-clear-editor").checked = settings.clearEditor;
+
+        document.getElementById("config-hide-pop-up").checked = settings.hidePopUp;
     }
 
     function initModalButtons() {
@@ -161,6 +174,10 @@ export function SettingsModalFactory(SettingsFactory) {
 
         document.getElementById('config-clear-editor').onchange = (e) => {
             SettingsFactory.update('clearEditor', e.target.checked)
+        }
+
+        document.getElementById("config-hide-pop-up").onchange = (e) => {
+            SettingsFactory.update("hidePopUp", e.target.checked)
         }
 
     }

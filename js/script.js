@@ -20,16 +20,16 @@ window.onload = () => {
   
   const storage = StorageFactory();
   const desafios = DesafioFactory(storage);
-  
-  const Settings = SettingsFactory(editor, desafios);
-  const SettingsModal = SettingsModalFactory(Settings);
-
-  Settings.applyAll()
 
   const feedbackToast = Feedback();
   const feedbackHeader = HeaderUI();
 
   const feedback = FeedbackService(feedbackToast, feedbackHeader);
+  
+  const Settings = SettingsFactory(editor, desafios, feedback);
+  const SettingsModal = SettingsModalFactory(Settings);
+
+  Settings.applyAll()
 
   const output = Output(editor, feedback);
   const IntroModal = IntroModalFactory();

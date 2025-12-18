@@ -1,6 +1,6 @@
 import { settingsStore } from '../core/SettingsStore.js';
 
-export function SettingsFactory(editor, desafios) {
+export function SettingsFactory(editor, desafios, feedback) {
   function applyAll() {
     const settings = settingsStore.getAll();
 
@@ -9,6 +9,8 @@ export function SettingsFactory(editor, desafios) {
     editor.setAutocomplete(settings.autocomplete);
     editor.setHighlightLine(settings.highlightLine);
     editor.setClearEditor(settings.clearEditor);
+
+    feedback.setHide(settings.hidePopUp);
   }
 
   function resetDesafio(){

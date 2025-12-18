@@ -3,7 +3,8 @@ const DEFAULT_SETTINGS = {
   fontSize: 16,
   autocomplete: true,
   highlightLine: true,
-  clearEditor: false
+  clearEditor: false,
+  hidePopUp: false
 };
 
 class SettingsStore {
