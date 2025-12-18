@@ -24,6 +24,12 @@ header {
 }
 header .subtitle { font-size: 14px; opacity: 0.9; }
 
+.img-logo {
+  background-color: #0f0f0f;
+  padding: 2px;
+  border-radius: 50%;
+}
+
 #icon-setting {
   transition: all 0.2s;
   cursor: pointer;
