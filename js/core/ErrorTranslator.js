@@ -2,7 +2,11 @@ export function ErrorTranslator() {
 
   function traduzir(erro) {
     if (!erro || !erro.name) {
-      return "Ocorreu um erro desconhecido no código.";
+      return {
+        text: "Ocorreu um erro desconhecido no código.",
+        type: 'error',
+        line: null
+      };
     }
 
     switch (erro.name) {
@@ -16,10 +20,20 @@ export function ErrorTranslator() {
         return traduzirTypeError(erro.message);
 
       case "RangeError":
-        return "O código entrou em um loop infinito ou usou um valor inválido."
+        return {
+          text: "O código usou um valor inválido ou entrou em um loop infinito.",
+          hint: "Confira condições de repetição como while e for.",
+          type: 'error',
+          line: null
+        };
 
       default:
-        return `Erro: ${erro} msg:${erro.message}`;
+        return {
+          text: "Ocorreu um erro inesperado no código.",
+          hint: "Tente simplificar o código e executar novamente.",
+          type: 'error',
+          line: null
+        };
     }
   }
 
@@ -31,32 +45,76 @@ export function ErrorTranslator() {
     const match = msg.match(/(.+) is not defined/);
 
     if (match) {
-      return `Você usou a variável "${match[1]}", mas ela não foi criada antes.`;
+      return {
+        text: `Você usou a variável "${match[1]}", mas ela não foi criada antes.`,
+        hint: `Crie essa variável antes de usá-la,\npor exemplo: let ${match[1]} = ...`,
+        type: 'error',
+        line: null
+      };
     }
 
-    return "Você tentou usar algo que não existe.";
+    return {
+      text: "Você tentou usar algo que não existe no código.",
+      hint: "Verifique se o nome da variável está correto e se ela foi criada.",
+      type: 'error',
+      line: null
+    };
   }
 
   function traduzirSyntaxError(msg) {
-    
+
     if (msg.startsWith("Unexpected token")) {
-      return "Há um símbolo em um lugar inesperado no código.";
-    }
-    if (msg.includes("Unexpected end of input")) {
-      return "O código terminou antes de fechar todas as chaves ou parênteses.";
+      return {
+        text: "Há um símbolo em um lugar inesperado no código.",
+        hint: "Verifique se não falta ou sobra alguma vírgula, chave {} ou parêntese ().",
+        type: 'error',
+        line: null
+      };
     }
 
-    return "Erro de escrita no código. Verifique parênteses e chaves.";
+    if (msg.includes("Unexpected end of input")) {
+      return {
+        text: "O código terminou antes de ser finalizado corretamente.",
+        hint: "Veja se todas as chaves {}, colchetes [] e parênteses () foram fechados.",
+        type: 'error',
+        line: null
+      };
+    }
+
+    return {
+      text: "Existe um erro de escrita no código.",
+      hint: "Leia o código com calma e confira a estrutura das linhas.",
+      type: 'error',
+      line: null
+    };
   }
 
   function traduzirTypeError(msg) {
+
     if (msg.includes("is not a function")) {
-      return "Você tentou chamar algo como função, mas isso não é uma função.";
+      return {
+        text: "Algo foi chamado como função, mas não é uma função.",
+        hint: "Confira se você usou parênteses () apenas em funções e escreveu o nome dela corretamente.",
+        type: 'error',
+        line: null
+      };
     }
+
     if (msg.includes("Cannot read properties")) {
-      return "Você tentou acessar uma propriedade de algo que não existe.";
+      return {
+        text: "Você tentou acessar uma propriedade de algo que não existe.",
+        hint: "Verifique se a variável não está undefined ou null antes de usá-la.",
+        type: 'error',
+        line: null
+      };
     }
-    return "Você usou algo de uma forma inválida.";
+
+    return {
+      text: "Algo foi usado de forma incorreta.",
+      hint: "Verifique o tipo da variável e como ela está sendo usada.",
+      type: 'error',
+      line: null
+    };
   }
 
   return {

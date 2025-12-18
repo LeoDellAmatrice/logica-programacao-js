@@ -42,20 +42,26 @@ export function AppController(editor, desafios, feedback, output) {
 
             new Function("console", code)(fakeConsole);
 
-            output.set(fakeConsole._output || "Código rodou sem saída.");
+            output.set(fakeConsole._output || "Código sem erros. Console sem mensagens.\nuse console.log() para exibir mensagens aqui :)");
         } catch (e) {
             const info = extrairLinhaColuna(e);
             const mensagemAmigavel = errorTranslator.traduzir(e);
 
+            feedback.show(mensagemAmigavel.hint, "info", 6000)
+
             if (info) {
                 editor.destacarLinha(info.linha);
                 output.set(
-                    `Erro na linha ${info.linha}:\n` +
-                    `${mensagemAmigavel}\n\n` +
+                    `Erro na linha: ${info.linha}\n` +
+                    `${mensagemAmigavel.text}\n\n` +
                     `Detalhe técnico: ${e.message}`
                 );
             } else {
-                output.set(`Erro: ${e.message} \n${mensagemAmigavel}`);
+                output.set(
+                    `Sem Informação de linha.\n` +
+                    `${mensagemAmigavel.text}\n\n` +
+                    `Detalhe técnico: ${e.message}`
+                );
             }
         }
 
@@ -68,7 +74,7 @@ export function AppController(editor, desafios, feedback, output) {
                 editor.addToAutoComplete(desafios.getDadosUnlock());
                 feedback.show("Parabéns! Você completou o desafio.", "success");
             } else {
-                feedback.show("Ainda não está certo. Tente novamente.", "error");
+                feedback.show("Desafio não foi completo. Tente novamente.", "error");
             }
         } catch (e) {
             feedback.show("Erro na validação: " + e.message, "error");

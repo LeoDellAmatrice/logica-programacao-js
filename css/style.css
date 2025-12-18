@@ -250,6 +250,9 @@ button:active { transform: scale(0.98); }
   opacity: 0;
   transform: translateY(-8px);
   animation: toast-in 0.25s ease forwards;
+
+  white-space: pre;
+  text-wrap: wrap;
 }
 
 /* Tipos */
