@@ -8,7 +8,6 @@ export function Output(editor, feedback) {
   function clear() {
     el.textContent = "";
     editor.limparDestaques();
-    feedback.clear();
   }
 
   return { set, clear };

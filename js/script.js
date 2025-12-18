@@ -1,12 +1,14 @@
 import { EditorFactory } from "./core/EditorFactory.js";
 import { StorageFactory } from "./core/StorageFactory.js";
 import { DesafioFactory } from "./core/DesafioFactory.js";
-import { Feedback } from "./ui/Feedback.js";
+import { Feedback } from "./ui/FeedbackToast.js";
 import { Output } from "./ui/Output.js";
 import { IntroModalFactory } from "./ui/IntroModal.js";
 import { SettingsModalFactory } from "./ui/SettingsModal.js"
 import { SettingsFactory } from "./core/SettingsFactory.js";
 import { AppController } from "./controllers/AppController.js";
+import { FeedbackService } from "./ui/FeedbackService.js"
+import { HeaderUI } from "./ui/Header.js"
 
 window.onload = () => {
   const editor = EditorFactory();
@@ -24,7 +26,11 @@ window.onload = () => {
 
   Settings.applyAll()
 
-  const feedback = Feedback();
+  const feedbackToast = Feedback();
+  const feedbackHeader = HeaderUI();
+
+  const feedback = FeedbackService(feedbackToast, feedbackHeader);
+
   const output = Output(editor, feedback);
   const IntroModal = IntroModalFactory();
 

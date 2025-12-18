@@ -13,7 +13,6 @@ export function AppController(editor, desafios, feedback, output) {
         document.getElementById("titulo").textContent = dados.titulo;
         document.getElementById("instrucoes").textContent = dados.instrucoes;
 
-        feedback.clear();
         output.clear();
     }
 
