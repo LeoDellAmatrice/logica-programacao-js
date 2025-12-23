@@ -19,7 +19,7 @@ export function IntroModalFactory() {
             <!-- Cabeçalho fixo -->
             <div class="modal-cabecalho">
             <img src="assets/img/logo_01js.png" width="36" heigth="36">
-            <h2 id="intro-modal-titulo">Bem-vindo ao CodeLogic!</h2>
+            <h2 id="intro-modal-titulo">Bem-vindo ao CheetahJS!</h2>
             <div class="modal-indicadores">
                 <span class="indicador ativo" data-pagina="1"></span>
                 <span class="indicador" data-pagina="2"></span>
@@ -279,7 +279,7 @@ export function IntroModalFactory() {
 
         // Atualizar título
         const titulos = [
-            "Bem-vindo ao CodeLogic!",
+            "Bem-vindo ao CheetahJS!",
             "Como Funciona",
             "Atalhos e Dicas",
             "Pronto para Começar?"
