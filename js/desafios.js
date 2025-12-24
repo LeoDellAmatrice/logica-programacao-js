@@ -14,7 +14,7 @@ export const Desafios = [
           log: (msg) => { fakeConsole._output += msg; }
         };
         const result = func(fakeConsole);
-        return result.includes("Olá, Mundo!");
+        return result == "Olá, Mundo!" || result == "Ola, Mundo!"
       } catch {
         return false;
       }
@@ -28,7 +28,7 @@ export const Desafios = [
       try {
         const func = new Function(`
           ${code}
-          return typeof nome !== "undefined" && nome === "Maria";
+          return typeof nome !== "undefined" && (nome === "Maria" || nome = "maria");
         `);
         return func();
       } catch {
@@ -54,7 +54,7 @@ export const Desafios = [
   },
   {
     titulo: "Condicional simples",
-    instrucoes: "Crie uma variável idade com valor 18 e use if/else para imprimir 'maior de idade' se idade >= 18, senão 'menor de idade'.\n\n💡 Dica: estrutura básica:\nif (condicao) {\n  // código se for verdadeiro\n} else {\n  // código se for falso\n}",
+    instrucoes: "Crie uma variável idade com valor 19 e use if/else para imprimir 'maior de idade' se idade >= 18, senão 'menor de idade'.\n\n💡 Dica: estrutura básica:\nif (condicao) {\n  // código se for verdadeiro\n} else {\n  // código se for falso\n}",
     unlockComplete: ['if', 'else'],
     validar: (code) => {
       try {
@@ -67,7 +67,7 @@ export const Desafios = [
           log: (msg) => { fakeConsole._output += msg; }
         };
         const result = func(fakeConsole);
-        return result.includes("maior de idade") || result.includes("menor de idade");
+        return (result == "maior de idade" && idade >= 18) || (result == "menor de idade" && idade < 18);
       } catch {
         return false;
       }
@@ -88,7 +88,7 @@ export const Desafios = [
           log: (msg) => { fakeConsole._output += msg + "\\n"; }
         };
         const result = func(fakeConsole);
-        return result.includes("1") && result.includes("5") && !result.includes("6");
+        return !result.includes("0") && result.includes("1") && result.includes("5") && !result.includes("6");
       } catch {
         return false;
       }
@@ -109,7 +109,7 @@ export const Desafios = [
           log: (msg) => { fakeConsole._output += msg + "\\n"; }
         };
         const result = func(fakeConsole);
-        return result.includes("1") && result.includes("2") && result.includes("3");
+        return !result.includes("0") && result.includes("1") && result.includes("2") && result.includes("3") && !result.includes("4");
       } catch {
         return false;
       }
