@@ -30,6 +30,7 @@ export function AppController(editor, desafios, feedback, output) {
     function executar() {
         const code = editor.getValue();
         editor.limparDestaques();
+        editor.animarExecucaoCodeMirror()
 
         // 1️⃣ Executar o código SEMPRE
         try {

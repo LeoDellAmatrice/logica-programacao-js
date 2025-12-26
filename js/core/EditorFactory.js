@@ -63,8 +63,8 @@ export function EditorFactory() {
         const sugestoes = palavrasAutoComplete
             .filter(p => p.startsWith(palavraAtual))
             .map(p => ({
-            text: p,
-            displayText: p
+                text: p,
+                displayText: p
             }));
 
         return {
@@ -99,6 +99,43 @@ export function EditorFactory() {
         editor.scrollIntoView({ line: linha - 1, ch: 0 }, 100);
     }
 
+    function animarExecucaoCodeMirror(velocidade = 40) {
+        const totalLinhas = editor.lineCount();
+        let linhaAtual = 0;
+
+        // Remove Cursor
+        const estadoOriginal = editor.getOption("styleActiveLine");
+        editor.setOption("styleActiveLine", false);
+        setTimeout(() => {
+            editor.setOption("styleActiveLine", estadoOriginal);
+        }, totalLinhas * velocidade);
+        
+
+        // limpa qualquer execução anterior
+        for (let i = 0; i < totalLinhas; i++) {
+            const handle = editor.getLineHandle(i);
+            editor.removeLineClass(handle, "background", "executing-line");
+        }
+
+        function executarLinha() {
+            if (linhaAtual > 0) {
+                const linhaAnterior = editor.getLineHandle(linhaAtual - 1);
+                editor.removeLineClass(linhaAnterior, "background", "executing-line");
+            }
+
+            if (linhaAtual < totalLinhas) {
+                const linha = editor.getLineHandle(linhaAtual);
+                editor.addLineClass(linha, "background", "executing-line");
+
+                linhaAtual++;
+                setTimeout(executarLinha, velocidade);
+            }
+        }
+
+        executarLinha();
+    }
+
+
     function setFontSize(size) {
         editor.getWrapperElement().style.fontSize = size + 'px';
     }
@@ -108,15 +145,15 @@ export function EditorFactory() {
         autocompleteEnabled = enabled;
 
         editor.setOption('extraKeys', enabled ? {
-        'Ctrl-Space': 'autocomplete'
+            'Ctrl-Space': 'autocomplete'
         } : {});
     }
 
-    function setClearEditor(clear){
+    function setClearEditor(clear) {
         clearEditorEnabled = clear;
     }
 
-    function clearEditor(){
+    function clearEditor() {
         if (!clearEditorEnabled) return;
 
         editor.setValue("")
@@ -143,6 +180,7 @@ export function EditorFactory() {
         setAutocomplete,
         setHighlightLine,
         setClearEditor,
-        clearEditor
+        clearEditor,
+        animarExecucaoCodeMirror
     };
 }

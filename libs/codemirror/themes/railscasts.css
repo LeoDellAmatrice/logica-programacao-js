@@ -22,3 +22,5 @@
 
 .cm-s-railscasts .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}
 .cm-s-railscasts .CodeMirror-activeline-background { background: #303040; }
+
+.cm-s-railscasts .executing-line { background: rgba(54, 85, 224, 0.18); }
