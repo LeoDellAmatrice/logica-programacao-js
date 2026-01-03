@@ -70,12 +70,15 @@ export function AppController(editor, desafios, feedback, output) {
         try {
             const valido = desafios.validar(code);
 
-            if (valido) {
+            console.log(valido.message)
+
+            if (valido.ok) {
                 desafios.avancar();
                 editor.addToAutoComplete(desafios.getDadosUnlock());
                 feedback.show("Parabéns! Você completou o desafio.", "success");
             } else {
                 feedback.show("Desafio não foi completo. Tente novamente.", "error");
+                if (valido.message) feedback.show(valido.message, "info", 5000)
             }
         } catch (e) {
             feedback.show("Erro na validação: " + e.message, "error");
